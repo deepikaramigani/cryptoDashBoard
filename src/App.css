@@ -1,42 +1,205 @@
+/* Crypto Table Styles */
+.crypto-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-table);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.crypto-table th, .crypto-table td {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-size: 1rem;
+}
+.crypto-table th {
+  background: var(--bg-panel);
+  color: var(--accent2);
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px solid var(--border);
+  transition: background 0.2s;
+}
+.crypto-table th.sortable:hover {
+  background: var(--accent2);
+  color: var(--bg-main);
+}
+.crypto-table tr {
+  transition: background 0.15s;
+}
+.crypto-table tr.coin-row:hover {
+  background: rgba(0, 225, 255, 0.08);
+  box-shadow: 0 2px 8px 0 rgba(0,225,255,0.08);
+}
+.crypto-table td {
+  border-bottom: 1px solid var(--border);
+}
+.crypto-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* App.css - Crypto Dashboard Theme */
+
+:root {
+  --bg-main: #181c23;
+  --bg-panel: #23283a;
+  --bg-table: #20232a;
+  --accent: #00e1ff;
+  --accent2: #ffb300;
+  --text-main: #f3f6fa;
+  --text-muted: #8a94a6;
+  --success: #16c784;
+  --danger: #ea3943;
+  --border: #2c3240;
+  --shadow: 0 2px 16px 0 rgba(0,0,0,0.15);
+  --radius: 14px;
+  --font-main: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  margin: 0;
+  min-height: 100vh;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem 3rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+h1, h2, h3, h4 {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent2);
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .dashboard-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.panel {
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.table-panel {
+  background: var(--bg-table);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1rem;
+  overflow-x: auto;
+}
+
+.highlight {
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.success {
+  color: var(--success);
+}
+.danger {
+  color: var(--danger);
+}
+
+.search-input {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 300px;
+  font-size: 1rem;
+  outline: none;
+  background: var(--bg-panel);
+  color: var(--text-main);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+.error-text {
+  color: var(--danger);
+  font-weight: 500;
+}
+
+.button-container {
   text-align: center;
+  margin: 2rem 0;
+}
+.load-more-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: var(--bg-main);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.load-more-btn:hover {
+  background-color: var(--accent2);
+  color: var(--bg-main);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.coin-details {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--bg-panel);
+  box-shadow: var(--shadow);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.coin-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent2);
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.coin-details p {
+  margin: 0.25rem 0;
+  font-size: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--bg-panel);
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
 }

@@ -8,18 +8,36 @@ export default function HighlightsPanel({ coins }) {
   const topVolume = [...coins].sort((a, b) => (b.total_volume ?? 0) - (a.total_volume ?? 0)).slice(0, 5);
 
   return (
-    <div style={{ display: "flex", gap: "2rem", marginTop: "2rem" }}>
-      <div>
+    <div className="dashboard-container" style={{ marginTop: "2rem" }}>
+      <div className="panel" style={{ flex: 1 }}>
         <h3>Top Gainers</h3>
-        <ul>{topGainers.map(c => <li key={c.id}>{c.name}: {(c.price_change_percentage_24h ?? 0).toFixed(2)}%</li>)}</ul>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {topGainers.map(c => (
+            <li key={c.id} style={{ marginBottom: 8 }}>
+              <span className="highlight">{c.name}</span>: <span className="success">{(c.price_change_percentage_24h ?? 0).toFixed(2)}%</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div>
+      <div className="panel" style={{ flex: 1 }}>
         <h3>Top Losers</h3>
-        <ul>{topLosers.map(c => <li key={c.id}>{c.name}: {(c.price_change_percentage_24h ?? 0).toFixed(2)}%</li>)}</ul>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {topLosers.map(c => (
+            <li key={c.id} style={{ marginBottom: 8 }}>
+              <span className="highlight">{c.name}</span>: <span className="danger">{(c.price_change_percentage_24h ?? 0).toFixed(2)}%</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div>
+      <div className="panel" style={{ flex: 1 }}>
         <h3>Highest Volume</h3>
-        <ul>{topVolume.map(c => <li key={c.id}>{c.name}: ${(c.total_volume ?? 0).toLocaleString()}</li>)}</ul>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {topVolume.map(c => (
+            <li key={c.id} style={{ marginBottom: 8 }}>
+              <span className="highlight">{c.name}</span>: <span style={{ color: "var(--accent)" }}>${(c.total_volume ?? 0).toLocaleString()}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

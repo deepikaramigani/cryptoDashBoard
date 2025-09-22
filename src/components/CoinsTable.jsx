@@ -18,21 +18,23 @@ export default function CoinsTable({ coins, onSelect }) {
   });
 
   return (
-    <table border="1" cellPadding="8" style={{ borderCollapse: "collapse", width: "100%" }}>
-      <thead>
-        <tr>
-          <th onClick={() => handleSort("rank")} style={{ cursor: "pointer" }}>Rank</th>
-          <th>Name</th>
-          <th onClick={() => handleSort("current_price")} style={{ cursor: "pointer" }}>Price</th>
-          <th onClick={() => handleSort("price_change_percentage_24h")} style={{ cursor: "pointer" }}>24h %</th>
-          <th onClick={() => handleSort("market_cap")} style={{ cursor: "pointer" }}>Market Cap</th>
-          <th onClick={() => handleSort("total_volume")} style={{ cursor: "pointer" }}>Volume</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sortedCoins.map(c => <CoinRow key={c.id} coin={c} onClick={() => onSelect(c)} />)}
-      </tbody>
-    </table>
+    <div className="table-panel">
+      <table className="crypto-table">
+        <thead>
+          <tr>
+            <th onClick={() => handleSort("rank")} className="sortable">Rank</th>
+            <th>Name</th>
+            <th onClick={() => handleSort("current_price")} className="sortable">Price</th>
+            <th onClick={() => handleSort("price_change_percentage_24h")} className="sortable">24h %</th>
+            <th onClick={() => handleSort("market_cap")} className="sortable">Market Cap</th>
+            <th onClick={() => handleSort("total_volume")} className="sortable">Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedCoins.map(c => <CoinRow key={c.id} coin={c} onClick={() => onSelect(c)} />)}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

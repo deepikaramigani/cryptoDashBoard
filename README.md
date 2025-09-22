@@ -1,137 +1,86 @@
+# Crypto Dashboard React App
 
-# Crypto Dashboard
+A modern cryptocurrency dashboard built with React.js and Vite. It displays real-time data for various coins, including highlights and a sortable table, using the CoinGecko API.
 
-A lightweight **React.js** application that displays live cryptocurrency market data using the [CoinGecko API](https://www.coingecko.com/api/documentations/v3).  
+## Features
+- Real-time cryptocurrency prices and market data
+- Highlights panel for key metrics
+- Sortable and filterable coins table
+- Modular React component structure
+- Custom hooks for data fetching
+- Fast development with Vite
 
-The dashboard includes:
-- **All Coins Overview** (sortable, searchable table with pagination)
-- **Highlights Section** (Top Gainers, Losers, Highest Volume, Trending)
+## Project Structure
 
----
-
-## 🚀 Tech Stack
-
-- **Framework:** React.js (Vite for bundling)
-- **Styling:** CSS (App.css, index.css)
-- **State & Data:** React Hooks + custom hooks (`useCoins`)
-- **API Layer:** Axios-based client (`src/api/coingeckoClient.js`)
-- **Utilities:** Adapter functions (`src/api/adaptCoin.js`)
-- **Build Tool:** Vite
-- **Hosting (optional):** Vercel / Netlify
-
----
-
-## 🏗️ Project Structure
-
+```
 crypto-dashboard/
-├── public/ # Static assets
-├── src/
-│ ├── api/ # API client & adapters
-│ │ ├── coingeckoClient.js
-│ │ └── adaptCoin.js
-│ ├── components/ # UI components
-│ │ ├── CoinRow.jsx
-│ │ ├── CoinsTable.jsx
-│ │ └── HighlightsPanel.jsx
-│ ├── hooks/ # Custom hooks
-│ │ └── useCoins.js
-│ ├── assets/ # Images, SVGs (react.svg)
-│ ├── App.jsx # Root app component
-│ ├── App.css
-│ ├── index.css
-│ └── main.jsx # React entry point
-├── .env # Local env variables (not committed)
-├── .gitignore
-├── package.json
-└── README.md
+├── .env                  # Environment variables (API keys, etc.)
+├── .gitignore            # Git ignore rules
+├── eslint.config.js      # ESLint configuration
+├── index.html            # Main HTML file
+├── package.json          # Project dependencies and scripts
+├── vite.config.js        # Vite configuration
+├── public/
+│   └── vite.svg          # Static assets
+└── src/
+    ├── App.jsx           # Main React component
+    ├── App.css           # App styles
+    ├── index.css         # Global styles
+    ├── main.jsx          # Entry point
+    ├── api/
+    │   ├── adaptCoin.js          # Data adaptation utilities
+    │   └── coingeckoClient.js    # CoinGecko API client
+    ├── assets/
+    │   └── react.svg             # Logo asset
+    ├── components/
+    │   ├── CoinRow.jsx           # Table row for a coin
+    │   ├── CoinsTable.jsx        # Table of coins
+    │   └── HighlightsPanel.jsx   # Highlights panel
+    └── hooks/
+        └── useCoins.js           # Custom hook for fetching coins
+```
 
----
+## Getting Started
 
-## 🧩 Design Patterns Used
+### Prerequisites
+- Node.js (v16 or higher recommended)
+- npm or yarn
 
-- **Repository Pattern** → `coingeckoClient.js` encapsulates API calls.  
-- **Adapter Pattern** → `adaptCoin.js` normalizes API responses for UI use.  
-- **Custom Hooks** → `useCoins.js` handles fetching, loading, and error states.  
-- **Container-Presenter Pattern** → `App.jsx` manages state, while `CoinsTable` and `HighlightsPanel` handle display logic.  
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   cd crypto-dashboard-react-js/crypto-dashboard
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
 
-**Why:** Ensures clear separation of concerns, easier testing, and avoids coupling UI directly to API response shapes.
-
----
-
-## ⚙️ Setup Instructions
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/crypto-dashboard.git
-cd crypto-dashboard
-2. Install dependencies
-npm install
-
-3. Environment Variables
-
-Create a .env file in the project root:
-
-cp .env.example .env
-
-
-.env.example:
-
-# CoinGecko API base URL
-VITE_API_BASE_URL=https://api.coingecko.com/api/v3
-
-# API key (optional, depending on endpoint usage)
-VITE_COINGECKO_API_KEY=
-
-
-⚠️ Never commit your real API keys. Only .env.example should be in Git.
-
-4. Run the project
+### Running the App
+Start the development server:
+```sh
 npm run dev
+# or
+yarn dev
+```
+The app will be available at `http://localhost:5173` (default Vite port).
 
+### Building for Production
+```sh
+npm run build
+# or
+yarn build
+```
+The production-ready files will be in the `dist/` folder.
 
-The app will be available at:
-👉 http://localhost:5173
+## Environment Variables
+You can use a `.env` file to store environment variables (e.g., API keys). See `.env.example` if available.
 
-📌 Features
+## License
+This project is licensed under the MIT License.
 
-All Coins View
-
-Rank, Name & Symbol (with icon), Current Price
-
-24h Price Change (absolute + %)
-
-Market Cap & Volume
-
-Pagination / Infinite scroll
-
-Search & Sorting
-
-Row click → details view (modal/basic info)
-
-Highlights Section
-
-Top gainers (24h)
-
-Top losers (24h)
-
-Highest volume
-
-Trending coins
-
-Easy to extend with new highlight types
-
-Resilience
-
-Loading states with spinners/skeletons
-
-Error states with retry
-
-Empty states for no results
-
-📌 Assumptions
-
-Free CoinGecko API tier is enough for assignment.
-
-Sorting & filtering handled client-side for simplicity.
-
-React Query was not used to keep setup minimal (custom hooks instead).
+---
+*Built with React, Vite, and ❤️*
